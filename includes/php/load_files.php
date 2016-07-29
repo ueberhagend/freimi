@@ -3,7 +3,12 @@ error_reporting(0);
 if(isset($_GET["id"]) && $_GET["type"]){
 	$id = $_GET["id"];
 	$type = $_GET["type"];
-$array = scandir("../../uploads/$type/$id/");
+if ($type!="opso"){
+	$array = scandir("../../uploads/$type/$id/");
+}
+else{
+	$array = scandir("../../../finance/uploads/$id/");
+}
 if(count($array) < 3){?> <div id='missing_files' style=font-size:10pt;color:orangered;>No files found!</div> <?php }
 $i = 0;
 foreach ($array as $key => $value) {
